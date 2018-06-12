@@ -3,6 +3,10 @@ ricetta(R) :- g_read(ricetta_global, R).
 steps_no(StepsNo) :- ricetta(R), length(R, StepsNo).
 
 step(S):- steps_no(N), between(1, N, S).
+step_ext(S):- S=0; step(S); step_unload(S).
+step_succ(S, Succ):-
+	step_unload(S), Succ=0,!;
+	succ(S, Succ).
 
 step_t(Step, Min, Max) :- ricetta(R), nth(Step, R, [Min, Max]).
 
@@ -10,8 +14,6 @@ step_unload(S):- steps_no(N), succ(N, S).
 
 hoist_lift_t(5).
 hoist_move_t(PosA, PosB, T):- is(T, 10*abs(PosA-PosB)).
-
-numJobs(2).
 
 event_t(List, Step, T) :-
 	succ(Step, Idx), nth(Idx, List, T).
@@ -41,55 +43,53 @@ lin2(Removal, Entry, S) :-
 	TIn+Tmax #>=# TOut.
 
 % vincolo: il tempo di permanenza di una barra nel sistema non puo' superare NumJobs cicli (perche' ad ogni ciclo viene rimossa una barra)
-lin3(Removal, Period) :- step_unload(ULStep), numJobs(NumJobs), event_t(Removal, ULStep, LastT), LastT #=<# NumJobs * Period.
+lin3(Removal, NumJobs, Period) :- step_unload(ULStep), event_t(Removal, ULStep, LastT), LastT #=<# NumJobs * Period.
 
 % il carro deve avere il tempo di andare da una posizione all'altra.
 % in questi calcoli il carro e' vuoto (non trasporta barre), quindi ignoriamo i tempi di sollevamento/abbassamento.
 
+% caso 1: la barra viene estratta dallo step2 dopo che e' stata estratta dallo step1
 disj1(Removal, Entry, Period, Step1, Step2, K) :- 
-	succ(Step1, SuccS1),
+	step_succ(Step1, SuccS1),
 	event_t(Entry, SuccS1, TEntrySuccS1),
 	hoist_move_t(SuccS1, Step2, TMove),
 	event_t(Removal, Step2, TRemovalS2),
 	TEntrySuccS1 + TMove + K*Period #=<# TRemovalS2.
 	
+% caso 2: la barra viene estratta dallo step1 dopo che e' stata estratta dallo step2
 disj1(Removal, Entry, Period, Step1, Step2, K) :-
-	succ(Step2, SuccS2),
+	step_succ(Step2, SuccS2),
 	event_t(Entry, SuccS2, TEntrySuccS2),
 	hoist_move_t(SuccS2, Step1, TMove),
 	event_t(Removal, Step1, TRemovalS1),
 	TEntrySuccS2 + TMove #=<# TRemovalS1 + K*Period.
 
 list_disj(L) :-
-	steps_no(StepsNo),
-	succ(StepsNoPrec, StepsNo),
-	findall([Step1, Step2], (between(1, StepsNoPrec, Step1), succ(Step1, Step1Succ), between(Step1Succ, StepsNo, Step2)), L).
+	findall([Step1, Step2], ((step_ext(Step1), step_ext(Step2), Step2>Step1); (step_unload(Step1), Step2=0)), L).
 
-disj(Removal, Entry, Period) :- list_disj(PairList), disj(Removal, Entry, Period, PairList).
+disj(Removal, Entry, NumJobs, Period) :- list_disj(PairList), disj(Removal, Entry, NumJobs, Period, PairList).
 
-disj(_,_,_,[]).
-disj(Removal, Entry, Period, [[Step1, Step2]| Rem]) :-
-	disj(Removal, Entry, Period, Rem),
-	numJobs(NumJobs), succ(NumJobsPrec, NumJobs),
-	findall(K, between(1, NumJobsPrec, K), KList),
+disj(_,_,_,_,[]).
+disj(Removal, Entry, NumJobs, Period, [[Step1, Step2]| Rem]) :-
+	disj(Removal, Entry, NumJobs, Period, Rem),
+	succ(NumJobsPrec, NumJobs),
+	findall(K, between(0, NumJobsPrec, K), KList),
 	maplist(disj1(Removal, Entry, Period, Step1, Step2), KList).
 	
-constraint(Removal, Entry, Period) :- lin0(Removal, Entry), lin1(Removal, Entry), lin2(Removal, Entry), lin3(Removal, Period), disj(Removal, Entry, Period).
+constraint(Removal, Entry, NumJobs, Period) :- lin0(Removal, Entry), lin1(Removal, Entry), lin2(Removal, Entry), lin3(Removal, NumJobs, Period), disj(Removal, Entry, NumJobs, Period).
 
 test1([0, 120, 240, 260], [0, 20, 140, 260]).
 test1:- test1(R, E), lin1(R, E), lin2(R, E), lin3(R, 170), disj(R, E, 170).
 
-% Esempio: min_period([[100,110], [100,110]], Period).
-min_period(Ricetta, Period) :-
+% Esempio: min_period([[100,110], [100,110]],Entry, Removal, 2, Period).
+min_period(Ricetta, Entry, Removal, NumJobs, Period) :-
 	g_assign(ricetta_global, Ricetta),
 	fd_set_vector_max(1000),
 	steps_no(StepsNo), ListLen is StepsNo+2,
 	length(Removal, ListLen), fd_domain(Removal, 0, 300),
 	length(Entry, ListLen), fd_domain(Entry, 0, 300),
-	fd_domain(Period, 0, 300),
-	constraint(Removal, Entry, Period),
-	append(Removal, Entry, _Problem1), Problem = [Period|_Problem1],
+	fd_domain(Period, 0, 1000),
+	constraint(Removal, Entry, NumJobs, Period),
+	append(Removal, Entry, _Problem1), 
+	append([Period], _Problem1, Problem),
 	fd_minimize(fd_labeling(Problem), Period).
-	
-	
-% E=[E1 , E2], fd_domain(E, 1, 6), fd_labeling(E), 10 =:= E1+E2.
