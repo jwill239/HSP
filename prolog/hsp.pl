@@ -43,7 +43,7 @@ lin2(Removal, Entry, S) :-
 	TIn+Tmax #>=# TOut.
 
 % vincolo: il tempo di permanenza di una barra nel sistema non puo' superare NumJobs cicli (perche' ad ogni ciclo viene rimossa una barra)
-lin3(Removal, NumJobs, Period) :- step_unload(ULStep), event_t(Removal, ULStep, LastT), LastT #=<# NumJobs * Period.
+lin3(Removal, NumJobs, Period) :- step_unload(ULStep), event_t(Removal, ULStep, LastT), hoist_move_t(ULStep,0,TRet), LastT+TRet #=<# NumJobs * Period.
 
 % il carro deve avere il tempo di andare da una posizione all'altra.
 % in questi calcoli il carro e' vuoto (non trasporta barre), quindi ignoriamo i tempi di sollevamento/abbassamento.
