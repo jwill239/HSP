@@ -84,12 +84,15 @@ test1:- test1(R, E), lin1(R, E), lin2(R, E), lin3(R, 170), disj(R, E, 170).
 % Esempio: min_period([[100,110], [100,110]],Entry, Removal, 2, Period).
 min_period(Ricetta, Entry, Removal, NumJobs, Period) :-
 	g_assign(ricetta_global, Ricetta),
-	fd_set_vector_max(1000),
+	fd_set_vector_max(10000),
 	steps_no(StepsNo), ListLen is StepsNo+2,
-	length(Removal, ListLen), fd_domain(Removal, 0, 300),
-	length(Entry, ListLen), fd_domain(Entry, 0, 300),
-	fd_domain(Period, 0, 1000),
+	length(Removal, ListLen), fd_domain(Removal, 0, 300000),
+	length(Entry, ListLen), fd_domain(Entry, 0, 300000),
+	fd_domain(Period, 0, 30000000),
 	constraint(Removal, Entry, NumJobs, Period),
 	append(Removal, Entry, _Problem1), 
 	append([Period], _Problem1, Problem),
 	fd_minimize(fd_labeling(Problem), Period).
+
+	
+%	min_period([[100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110]],Entry, Removal, 10, Period).
