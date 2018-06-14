@@ -3,7 +3,7 @@
 :- lib(ic).
 :- lib(branch_and_bound).
 
-ricetta([[100,110], [50,110], [100,110], [50,110], [100,110], [50,110], [100,110], [50,110], [100,110], [50,110]]).
+ricetta([[100,110], [50,110], [100,110], [50,110], [100,110], [50,110], [100,110]]).
 
 steps_no(StepsNo) :- ricetta(R), length(R, StepsNo).
 
@@ -69,6 +69,7 @@ disj1(Removal, Entry, Period, Step1, Step2, K) :-
 	event_t(Removal, Step1, TRemovalS1),
 	TEntrySuccS2 + TMove #=< TRemovalS1 + K*Period.
 
+% elenco di tutte le coppie di vasche (step).
 list_disj(L) :-
 	findall([Step1, Step2], ((step_ext(Step1), step_ext(Step2), Step2>Step1); (step_unload(Step1), Step2=0)), L).
 
@@ -77,9 +78,7 @@ disj(Removal, Entry, NumJobs, Period) :- list_disj(PairList), disj(Removal, Entr
 disj(_,_,_,_,[]).
 disj(Removal, Entry, NumJobs, Period, [[Step1, Step2]| Rem]) :-
 	disj(Removal, Entry, NumJobs, Period, Rem),
-	succ(NumJobsPrec, NumJobs),
-	findall(K, between(0, NumJobsPrec, K), KList),
-	maplist(disj1(Removal, Entry, Period, Step1, Step2), KList).
+	(for(K, 0, NumJobs-1), param(Removal, Entry, Period, Step1, Step2) do disj1(Removal, Entry, Period, Step1, Step2, K)).
 	
 constraint(Removal, Entry, NumJobs, Period) :- lin0(Removal, Entry), lin1(Removal, Entry), lin2(Removal, Entry), lin3(Removal, NumJobs, Period), disj(Removal, Entry, NumJobs, Period).
 
@@ -97,5 +96,4 @@ min_period(Entry, Removal, NumJobs, Period) :-
 	append([Period], _Problem1, Problem),
 	minimize(labeling(Problem), Period).
 
-	
-%	min_period([[100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110], [100,110]],Entry, Removal, 10, Period).
+% min_period(Entry, Removal, 4, Period).  Period=530, 6.92s cpu.
