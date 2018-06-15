@@ -3,7 +3,7 @@
 :- lib(ic).
 :- lib(branch_and_bound).
 
-ricetta([[100,110], [50,110], [100,110], [50,110], [100,110], [50,110], [100,110]]).
+ricetta([[50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200]]).
 
 steps_no(StepsNo) :- ricetta(R), length(R, StepsNo).
 
@@ -48,7 +48,9 @@ lin2(Removal, Entry, S) :-
 	TIn+Tmax $>= TOut.
 
 % vincolo: il tempo di permanenza di una barra nel sistema non puo' superare NumJobs cicli (perche' ad ogni ciclo viene rimossa una barra)
-lin3(Removal, NumJobs, Period) :- step_unload(ULStep), event_t(Removal, ULStep, LastT), hoist_move_t(ULStep,0,TRet), LastT+TRet $=< NumJobs * Period.
+lin3(Removal, NumJobs, Period) :-
+	step_unload(ULStep), event_t(Removal, ULStep, LastT), hoist_move_t(ULStep,0,TRet), LastT + TRet $=< NumJobs * Period,
+	Period $=< LastT + TRet.
 
 % il carro deve avere il tempo di andare da una posizione all'altra.
 % in questi calcoli il carro e' vuoto (non trasporta barre), quindi ignoriamo i tempi di sollevamento/abbassamento.
@@ -57,28 +59,44 @@ lin3(Removal, NumJobs, Period) :- step_unload(ULStep), event_t(Removal, ULStep, 
 disj1(Removal, Entry, Period, Step1, Step2, K) :- 
 	step_succ(Step1, SuccS1),
 	event_t(Entry, SuccS1, TEntrySuccS1),
-	hoist_move_t(SuccS1, Step2, TMove),
+	hoist_move_t(SuccS1, Step2, TMoveSS1S2),
 	event_t(Removal, Step2, TRemovalS2),
-	TEntrySuccS1 + TMove + K*Period $=< TRemovalS2.
+	TEntrySuccS1 + TMoveSS1S2 + K*Period $< TRemovalS2.
 	
 % caso 2: la barra viene estratta dallo step1 dopo che e' stata estratta dallo step2
 disj1(Removal, Entry, Period, Step1, Step2, K) :-
 	step_succ(Step2, SuccS2),
 	event_t(Entry, SuccS2, TEntrySuccS2),
-	hoist_move_t(SuccS2, Step1, TMove),
+	hoist_move_t(SuccS2, Step1, TMoveSS2S1),
 	event_t(Removal, Step1, TRemovalS1),
-	TEntrySuccS2 + TMove $=< TRemovalS1 + K*Period.
+	TEntrySuccS2 + TMoveSS2S1 $< TRemovalS1 + K*Period.
 
+lin_disj1(Removal, Entry, Period, Step1, Step2, K) :-
+	step_succ(Step1, SuccS1),
+	event_t(Entry, SuccS1, TEntrySuccS1),
+	hoist_move_t(SuccS1, Step2, TMoveSS1S2),
+	event_t(Removal, Step2, TRemovalS2),
+	step_succ(Step2, SuccS2),
+	event_t(Entry, SuccS2, TEntrySuccS2),
+	hoist_move_t(SuccS2, Step1, TMoveSS2S1),
+	event_t(Removal, Step1, TRemovalS1),
+	[B1,B2] #:: 0..1,
+	$<(TEntrySuccS1 + TMoveSS1S2 + K*Period, TRemovalS2, B1),
+	$<(TEntrySuccS2 + TMoveSS2S1, TRemovalS1 + K*Period, B2),
+	B1+B2 #>= 1.
+	
+	
+	
 % elenco di tutte le coppie di vasche (step).
 list_disj(L) :-
-	findall([Step1, Step2], ((step_ext(Step1), step_ext(Step2), Step2>Step1); (step_unload(Step1), Step2=0)), L).
+	findall([Step1, Step2], (step_ext(Step1), step_ext(Step2), Step2>Step1), L).
 
 disj(Removal, Entry, NumJobs, Period) :- list_disj(PairList), disj(Removal, Entry, NumJobs, Period, PairList).
 
 disj(_,_,_,_,[]).
 disj(Removal, Entry, NumJobs, Period, [[Step1, Step2]| Rem]) :-
-	disj(Removal, Entry, NumJobs, Period, Rem),
-	(for(K, 0, NumJobs-1), param(Removal, Entry, Period, Step1, Step2) do disj1(Removal, Entry, Period, Step1, Step2, K)).
+	(for(K, 0, NumJobs-1), param(Removal, Entry, Period, Step1, Step2) do lin_disj1(Removal, Entry, Period, Step1, Step2, K)),
+	disj(Removal, Entry, NumJobs, Period, Rem).
 	
 constraint(Removal, Entry, NumJobs, Period) :- lin0(Removal, Entry), lin1(Removal, Entry), lin2(Removal, Entry), lin3(Removal, NumJobs, Period), disj(Removal, Entry, NumJobs, Period).
 
@@ -97,3 +115,10 @@ min_period(Entry, Removal, NumJobs, Period) :-
 	minimize(labeling(Problem), Period).
 
 % min_period(Entry, Removal, 4, Period).  Period=530, 6.92s cpu.
+
+check_period(Entry, Removal, NumJobs, Period) :-
+	steps_no(StepsNo), ListLen is StepsNo+2,
+	length(Removal, ListLen), Removal :: 0..300000,
+	length(Entry, ListLen), Entry :: 0..300000,
+	Period :: 0..30000000,
+	constraint(Removal, Entry, NumJobs, Period).
