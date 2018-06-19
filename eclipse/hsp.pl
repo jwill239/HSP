@@ -5,7 +5,7 @@
 :- eplex_instance(ep).
 
 
-ricetta([[50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200]]).
+ricetta([[50,200], [50,200], [50, 200], [50, 200], [50, 200], [50, 200], [50, 200], [50, 200], [50, 200], [50, 200]]).
 
 steps_no(StepsNo) :- ricetta(R), length(R, StepsNo).
 
@@ -73,9 +73,12 @@ lin_disj1(Removal, Entry, Period, Step1, Step2, K) :-
 	event_t(Removal, Step1, TRemovalS1),
 	ep: ([B1,B2] $:: 0..1),
 	ep: integers([B1,B2]),
-	ep: (B1 => (TEntrySuccS1 + TMoveSS1S2 + K*Period $=< TRemovalS2)),
-	ep: (B2 => (TEntrySuccS2 + TMoveSS2S1 $=< TRemovalS1 + K*Period)),
-	ep: (B1+B2 $>= 1).
+	M = 30000000000,
+	% ep: (B1 => (TEntrySuccS1 + TMoveSS1S2 + K*Period $=< TRemovalS2)),
+	ep: (TEntrySuccS1 + TMoveSS1S2 + K*Period + M*B1 $=< TRemovalS2 + M),
+	%ep: (B2 => (TEntrySuccS2 + TMoveSS2S1 $=< TRemovalS1 + K*Period)),
+	ep: (TEntrySuccS2 + TMoveSS2S1 +M*B2 $=< TRemovalS1 + K*Period + M),
+	ep: (B1+B2 $= 1).
 	
 	
 	
@@ -115,7 +118,7 @@ check_period(Entry, Removal, NumJobs, Period) :-
 	Period :: 0..30000000,
 	constraint(Removal, Entry, NumJobs, Period).
 	
-eplex_period(Entry, Removal, NumJobs) :-
+eplex_period(Entry, Removal, NumJobs, Period) :-
 	steps_no(StepsNo), ListLen is StepsNo+2,
 	length(Removal, ListLen),
 	length(Entry, ListLen),
