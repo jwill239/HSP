@@ -2,7 +2,7 @@ clear all;
 close all;
 global ricetta;
 init_ricetta;
-numJobs=1;
+numJobs=4;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -75,5 +75,3 @@ g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
 x0=zeros(index_var("num"), 1);
 x= sqp(x0, cost, g, h);
-
-  
