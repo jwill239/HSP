@@ -2,7 +2,7 @@ clear all;
 close all;
 global ricetta;
 init_ricetta;
-numJobs=4;
+numJobs=1;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -70,7 +70,7 @@ vb= hoist_move_t(num_steps()+1, 0, "empty");
 CD= [CD; RC];
 bd= [bd; vb];
 
-cost= @(vars) vars(index_var("period")) + overlap(vars, numJobs);
+cost= @(vars) vars(index_var("period"));
 g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
 x0=zeros(index_var("num"), 1);
