@@ -70,10 +70,15 @@ vb= hoist_move_t(num_steps()+1, 0, "empty");
 CD= [CD; RC];
 bd= [bd; vb];
 
-cost= @(vars) vars(index_var("period"))+overlap(vars, numJobs);
+cost= @(vars) vars(index_var("period"))+1000*overlap(vars, numJobs);
 g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
-x0= [160 0 20 140 260 0 120 240 260];
+x0= [10 0 20 140 260 0 120 240 260]';
+x1= [259 0 20 140 260 0 120 240 260]';
+
 [x, obj, info, iter, nf, lambda]= sqp(x0, cost, g, h);
+
+x(index_var("period"))
+overlap(x, numJobs)
 
 timediagram(x, numJobs);
