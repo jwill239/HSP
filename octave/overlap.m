@@ -2,8 +2,8 @@ function o= overlap(vars, numJobs)
   o= 0;
   period= vars(index_var("period"));
   
-  for s1= 0:num_steps()
-    for s2= s1+1:num_steps()+1
+  for s1= 0:num_steps()-1
+    for s2= s1+1:num_steps()
       % disp([s1 s2]);
       EntryS1= vars(index_var("entry", s1));
       EntryS2= vars(index_var("entry", s2));
