@@ -3,8 +3,6 @@
 :- lib(ic).
 :- lib(branch_and_bound).
 
-ricetta([[50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200]]).
-
 steps_no(StepsNo) :- ricetta(R), length(R, StepsNo).
 
 step(S):- steps_no(N), between(1, N, S).
@@ -71,22 +69,6 @@ disj1(Removal, Entry, Period, Step1, Step2, K) :-
 	event_t(Removal, Step1, TRemovalS1),
 	TEntrySuccS2 + TMoveSS2S1 $< TRemovalS1 + K*Period.
 
-lin_disj1(Removal, Entry, Period, Step1, Step2, K) :-
-	step_succ(Step1, SuccS1),
-	event_t(Entry, SuccS1, TEntrySuccS1),
-	hoist_move_t(SuccS1, Step2, TMoveSS1S2),
-	event_t(Removal, Step2, TRemovalS2),
-	step_succ(Step2, SuccS2),
-	event_t(Entry, SuccS2, TEntrySuccS2),
-	hoist_move_t(SuccS2, Step1, TMoveSS2S1),
-	event_t(Removal, Step1, TRemovalS1),
-	[B1,B2] #:: 0..1,
-	$<(TEntrySuccS1 + TMoveSS1S2 + K*Period, TRemovalS2, B1),
-	$<(TEntrySuccS2 + TMoveSS2S1, TRemovalS1 + K*Period, B2),
-	B1+B2 #>= 1.
-	
-	
-	
 % elenco di tutte le coppie di vasche (step).
 list_disj(L) :-
 	findall([Step1, Step2], (step_ext(Step1), step_ext(Step2), Step2>Step1), L).
@@ -95,20 +77,17 @@ disj(Removal, Entry, NumJobs, Period) :- list_disj(PairList), disj(Removal, Entr
 
 disj(_,_,_,_,[]).
 disj(Removal, Entry, NumJobs, Period, [[Step1, Step2]| Rem]) :-
-	(for(K, 0, NumJobs-1), param(Removal, Entry, Period, Step1, Step2) do lin_disj1(Removal, Entry, Period, Step1, Step2, K)),
+	(for(K, 0, NumJobs-1), param(Removal, Entry, Period, Step1, Step2) do disj1(Removal, Entry, Period, Step1, Step2, K)),
 	disj(Removal, Entry, NumJobs, Period, Rem).
 	
 constraint(Removal, Entry, NumJobs, Period) :- lin0(Removal, Entry), lin1(Removal, Entry), lin2(Removal, Entry), lin3(Removal, NumJobs, Period), disj(Removal, Entry, NumJobs, Period).
 
-test1([0, 120, 240, 260], [0, 20, 140, 260]).
-test1:- test1(R, E), lin1(R, E), lin2(R, E), lin3(R, 170), disj(R, E, 170).
-
 % Esempio: min_period(Entry, Removal, 2, Period).
 min_period(Entry, Removal, NumJobs, Period) :-
 	steps_no(StepsNo), ListLen is StepsNo+2,
-	length(Removal, ListLen), Removal :: 0..300000,
-	length(Entry, ListLen), Entry :: 0..300000,
-	Period :: 0..30000000,
+	length(Removal, ListLen), Removal :: 0..inf,
+	length(Entry, ListLen), Entry :: 0..inf,
+	Period :: 0..inf,
 	constraint(Removal, Entry, NumJobs, Period),
 	append(Removal, Entry, _Problem1), 
 	append([Period], _Problem1, Problem),
@@ -118,7 +97,11 @@ min_period(Entry, Removal, NumJobs, Period) :-
 
 check_period(Entry, Removal, NumJobs, Period) :-
 	steps_no(StepsNo), ListLen is StepsNo+2,
-	length(Removal, ListLen), Removal :: 0..300000,
-	length(Entry, ListLen), Entry :: 0..300000,
-	Period :: 0..30000000,
-	constraint(Removal, Entry, NumJobs, Period).
+	length(Removal, ListLen), Removal :: 0..inf,
+	length(Entry, ListLen), Entry :: 0..inf,
+	Period :: 0..inf,
+	constraint(Removal, Entry, NumJobs, Period),
+	print(Period), nl, labeling([Period]).
+	
+ricetta([[50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200], [50,200]]).
+run:- min_period(Entry, Removal, 3, Period).
