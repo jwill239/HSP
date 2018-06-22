@@ -1,8 +1,10 @@
 clear all;
 close all;
+format short G;
+
 global ricetta;
 init_ricetta;
-numJobs=2;
+numJobs=5;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -85,12 +87,11 @@ endfor
 cost= @(vars) vars(index_var("period"))+1000*overlap(vars, numJobs);
 g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
-x0= [100 0 1 102 203 0 101 202 203]';
-% x0= zeros(index_var("num"),1);
+x0= zeros(index_var("num"),1); x0(index_var("period"))=110;
 
 [x, obj, info, iter, nf, lambda]= sqp(x0, cost, g, h);
 
 x(index_var("period"))
-overlap(x, numJobs, 1)
+overlap(x, numJobs, 2)
 
 timediagram(x, numJobs);
