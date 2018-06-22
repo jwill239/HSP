@@ -70,15 +70,27 @@ vb= hoist_move_t(num_steps()+1, 0, "empty");
 CD= [CD; RC];
 bd= [bd; vb];
 
+% lin4
+for s=1:num_steps()
+  RC=zeros(1, index_var("num"));
+  RC(index_var("period"))= 1;
+  RC(index_var("entry", s))= 1;
+  RC(index_var("removal", s))= -1;
+  vb= 0;
+  CD= [CD; RC];
+  bd= [bd; vb];
+endfor
+
+% ricerca
 cost= @(vars) vars(index_var("period"))+1000*overlap(vars, numJobs);
 g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
-x0= [10 0 20 140 260 0 120 240 260]';
-x1= [259 0 20 140 260 0 120 240 260]';
+x0= [100 0 1 102 203 0 101 202 203]';
+% x0= zeros(index_var("num"),1);
 
 [x, obj, info, iter, nf, lambda]= sqp(x0, cost, g, h);
 
 x(index_var("period"))
-overlap(x, numJobs)
+overlap(x, numJobs, 1)
 
 timediagram(x, numJobs);

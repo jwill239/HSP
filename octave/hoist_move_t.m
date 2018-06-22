@@ -1,11 +1,11 @@
 function t= hoist_move_t(PA, PB, opt="empty")
-  hoist_speed= 10;
-  hoist_lift_t= 5;
+  hoist_speed_r= 1; % reciproco della velocita', secondi per una posizione
+  hoist_lift_t= 0;
 
   if (strcmp(opt, "empty"))
-    t= 10*abs(PA-PB);
+    t= hoist_speed_r*abs(PA-PB);
   elseif (strcmp(opt, "full"))
-    t= hoist_lift_t + 10*abs(PA-PB) + hoist_lift_t;
+    t= hoist_lift_t + hoist_speed_r*abs(PA-PB) + hoist_lift_t;
   else
     error("opt");
   endif
