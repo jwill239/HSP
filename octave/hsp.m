@@ -5,7 +5,7 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=3;
+numJobs=4;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -131,7 +131,7 @@ ub(1:index_var("num_cont"))=Inf;
 vartype(1:index_var("num_cont"))= "C";
 ub(index_var("bool_base"):index_var("num"))=1;
 vartype(index_var("bool_base"):index_var("num"))="I";
-param.msglev = 3;
+param.msglev = 2;
 
 [x, fmin, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense, param);
 
