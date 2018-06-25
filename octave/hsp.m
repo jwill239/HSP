@@ -87,7 +87,8 @@ endfor
 cost= @(vars) vars(index_var("period"))+1000*overlap(vars, numJobs);
 g= @(vars) CE*vars-be;
 h= @(vars) CD*vars-bd;
-x0= zeros(index_var("num"),1); x0(index_var("period"))=110;
+
+x0= zeros(index_var("num"),1); x0(index_var("period"))=400;
 
 [x, obj, info, iter, nf, lambda]= sqp(x0, cost, g, h);
 
