@@ -1,7 +1,15 @@
 function init_ricetta()
   global ricetta;
-  num_step=2;
-  for i=1:num_step
-    ricetta(i,:)= [100 100];
-  endfor
-endfunction 
+  ricetta= [
+    100 200;
+    100 200;
+    500 550;
+    100 200;
+    1000 1100;
+    100 200;
+    1000 1100;
+    100 200;
+    500 550;
+    100 200
+  ];
+  endfunction 

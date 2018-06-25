@@ -5,7 +5,7 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=2;
+numJobs=3;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -135,7 +135,13 @@ param.msglev = 3;
 
 [x, fmin, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense, param);
 
-x(index_var("period"))
-overlap(x, numJobs, 2)
+printf("numero di cicli: %u;\n", numJobs);
+printf("Ciclo= %f secondi;\n", x(index_var("period")));
+if (errnum!=0)
+  printf("glpk error %d;\n", errnum);
+endif
+if (overlap(x, numJobs, 2)>eps)
+  printf("Error: overlap found!\n");
+endif
 
-timediagram(x, numJobs);
+timediagram(x, numJobs, 1);
