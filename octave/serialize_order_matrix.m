@@ -1,6 +1,6 @@
 function r= serialize_order_matrix(x, y)
   N= num_steps();
-  if (x>=y)
+  if (x>=y || y>N || x>N)
     error("serialize_order_matrix");
   endif
   if (x==0)

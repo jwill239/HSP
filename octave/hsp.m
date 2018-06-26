@@ -5,7 +5,9 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=4;
+numJobs=2;
+global numHoists;
+numHoists=1;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -86,13 +88,23 @@ for s=1:num_steps()
 endfor
 
 % no overlap; disjunctive linearizzato
-M= 100000;
+M= 10000;
 for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
+    RC=zeros(1, index_var("num"));
+    RC(index_var("hoist", s2))= 1;
+    RC(index_var("hoist", s1))= -1;
+    RC(index_var("disj_diffhoist", s1, s2))= -M;
+    vb= 1-M;
+    A= [A; RC];
+    b= [b; vb];
+    ctype= [ctype "L"];
+
     for k=1:numJobs
       RC=zeros(1, index_var("num"));
-      RC(index_var("bool_order", s1, s2, k-1))= 1;
-      RC(index_var("bool_order", s1, s2, k-1)+1)= 1;
+      RC(index_var("disj_diffhoist", s1, s2))= 1;
+      RC(index_var("disj_order", s1, s2, k-1))= 1;
+      RC(index_var("disj_order", s1, s2, k-1)+1)= 1;
       vb= 1;
       A= [A; RC];
       b= [b; vb];
@@ -101,7 +113,7 @@ for s1=0:num_steps()-1
       RC=zeros(1, index_var("num"));
       RC(index_var("entry", s1+1))= 1;
       RC(index_var("period"))= k;
-      RC(index_var("bool_order", s1, s2, k-1))= M;
+      RC(index_var("disj_order", s1, s2, k-1))= M;
       RC(index_var("removal", s2))= -1;
       vb= M-hoist_move_t(s1+1, s2, "empty");
       A= [A; RC];
@@ -111,7 +123,7 @@ for s1=0:num_steps()-1
       RC=zeros(1, index_var("num"));
       RC(index_var("entry", s2+1))= 1;
       RC(index_var("period"))= -k;
-      RC(index_var("bool_order", s1, s2, k-1)+1)= M;
+      RC(index_var("disj_order", s1, s2, k-1)+1)= M;
       RC(index_var("removal", s1))= -1;
       vb= M-hoist_move_t(s2+1, s1, "empty");
       A= [A; RC];
@@ -122,26 +134,40 @@ for s1=0:num_steps()-1
   endfor
 endfor
 
+vartype(1:index_var("num"))= "-";
+
+lb(index_var("period"))=0;
+ub(index_var("period"))=Inf;
+vartype(index_var("period"))= "C";
+
+for s=0:num_steps()+1
+  lb(index_var("entry", s))=0;
+  ub(index_var("entry", s))=Inf;
+  vartype(index_var("entry", s))= "C";
+  lb(index_var("removal", s))=0;
+  ub(index_var("removal", s))=Inf;
+  vartype(index_var("removal", s))= "C";
+  lb(index_var("hoist", s))=1;
+  ub(index_var("hoist", s))=numHoists;
+  vartype(index_var("hoist", s))= "I";
+  endfor
+lb(index_var("disj_base_0"):index_var("num"))=0;
+ub(index_var("disj_base_0"):index_var("num"))=1;
+vartype(index_var("disj_base_0"):index_var("num"))="I";
 
 % ricerca
 c= zeros(index_var("num"), 1); c(index_var("period"))= 1;
 sense=1;
-lb(1:index_var("num"))=0;
-ub(1:index_var("num_cont"))=Inf;
-vartype(1:index_var("num_cont"))= "C";
-ub(index_var("bool_base"):index_var("num"))=1;
-vartype(index_var("bool_base"):index_var("num"))="I";
-param.msglev = 2;
+param.msglev = 3;
 
 [x, fmin, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense, param);
 
-printf("numero di cicli: %u;\n", numJobs);
-printf("Ciclo= %f secondi;\n", x(index_var("period")));
 if (errnum!=0)
   printf("glpk error %d;\n", errnum);
+else
+  if (overlap(x, numJobs, 2)>eps)
+    printf("Error: overlap found!\n");
+  endif
+  show_sol(x,1);
+  timediagram(x, numJobs, 1);
 endif
-if (overlap(x, numJobs, 2)>eps)
-  printf("Error: overlap found!\n");
-endif
-
-timediagram(x, numJobs, 1);
