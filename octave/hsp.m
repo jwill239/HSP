@@ -7,7 +7,9 @@ init_ricetta;
 global numJobs;
 numJobs=2;
 global numHoists;
-numHoists=1;
+numHoists=2;
+
+margin=10;
 
 % lin0
 % Entry[0]= 0, Removal[0]= 0
@@ -76,12 +78,13 @@ b= [b; vb];
 ctype= [ctype "L"];
 
 % lin4
+% occupazione vasca (capacita' 1)
 for s=1:num_steps()
   RC=zeros(1, index_var("num"));
   RC(index_var("period"))= 1;
   RC(index_var("entry", s))= 1;
   RC(index_var("removal", s))= -1;
-  vb= 0;
+  vb= margin;
   A= [A; RC];
   b= [b; vb];
   ctype= [ctype "L"];
@@ -91,6 +94,7 @@ endfor
 M= 10000;
 for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
+    % carri diversi
     RC=zeros(1, index_var("num"));
     RC(index_var("hoist", s2))= 1;
     RC(index_var("hoist", s1))= -1;
@@ -134,6 +138,19 @@ for s1=0:num_steps()-1
   endfor
 endfor
 
+% hoist partition
+for s1=0:num_steps()-1
+  for s2=s1+1:num_steps()
+    RC=zeros(1, index_var("num"));
+    RC(index_var("hoist", s2))= 1;
+    RC(index_var("hoist", s1))= -1;
+    vb= 0;
+    A= [A; RC];
+    b= [b; vb];
+    ctype= [ctype "L"];
+  endfor
+endfor
+
 vartype(1:index_var("num"))= "-";
 
 lb(index_var("period"))=0;
@@ -169,5 +186,5 @@ else
     printf("Error: overlap found!\n");
   endif
   show_sol(x,1);
-  timediagram(x, numJobs, 1);
+  timediagram(x, numJobs, 0);
 endif
