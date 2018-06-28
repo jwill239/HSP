@@ -4,7 +4,7 @@ function show_sol(x, detail=0)
   printf("numero di cicli: %u;\n", numJobs);
   printf("Ciclo= %f secondi;\n", x(index_var("period")));
   poslist=(0:num_steps()+1)';
-  disp([poslist x(index_var("hoist", poslist)) x(index_var("entry", poslist)) x(index_var("removal", poslist)) (x(index_var("removal", poslist)) - x(index_var("entry", poslist)))]);
+  disp([poslist x(index_var("hoist_e", poslist)) x(index_var("entry", poslist)) x(index_var("hoist_r", poslist)) x(index_var("removal", poslist)) (x(index_var("removal", poslist)) - x(index_var("entry", poslist)))]);
 
   if (detail>=1)
     printf("disjunction\n");

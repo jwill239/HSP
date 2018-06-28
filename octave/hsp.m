@@ -96,8 +96,8 @@ for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
     % carri diversi
     RC=zeros(1, index_var("num"));
-    RC(index_var("hoist", s2))= 1;
-    RC(index_var("hoist", s1))= -1;
+    RC(index_var("hoist_r", s2))= 1;
+    RC(index_var("hoist_r", s1))= -1;
     RC(index_var("disj_diffhoist", s1, s2))= -M;
     vb= 1-M;
     A= [A; RC];
@@ -138,18 +138,52 @@ for s1=0:num_steps()-1
   endfor
 endfor
 
-% hoist partition
-for s1=0:num_steps()-1
-  for s2=s1+1:num_steps()
-    RC=zeros(1, index_var("num"));
-    RC(index_var("hoist", s2))= 1;
-    RC(index_var("hoist", s1))= -1;
-    vb= 0;
-    A= [A; RC];
-    b= [b; vb];
-    ctype= [ctype "L"];
-  endfor
+% compilazione di hoist_e
+for s=0:num_steps()
+  RC=zeros(1, index_var("num"));
+  RC(index_var("hoist_r", s))= 1;
+  RC(index_var("hoist_e", s+1))= -1;
+  vb= 0;
+  A= [A; RC];
+  b= [b; vb];
+  ctype= [ctype "S"];
 endfor
+
+% inizializzazione di hoist_e sul carico e hoist_r sullo scarico (solo per motivi estetici)
+RC=zeros(1, index_var("num"));
+RC(index_var("hoist_r", s))= 1;
+RC(index_var("hoist_e", s))= -1;
+vb= 0;
+A= [A; RC];
+b= [b; vb];
+ctype= [ctype "S"];
+
+RC=zeros(1, index_var("num"));
+RC(index_var("hoist_r", num_steps()+1))= 1;
+RC(index_var("hoist_e", num_steps()+1))= -1;
+vb= 0;
+A= [A; RC];
+b= [b; vb];
+ctype= [ctype "S"];
+
+
+% hoist partition
+collision="partition";
+if (strcmp(collision, "partition"))
+  for s1=0:num_steps()-1
+    for s2=s1+1:num_steps()
+      RC=zeros(1, index_var("num"));
+      RC(index_var("hoist_r", s2))= 1;
+      RC(index_var("hoist_r", s1))= -1;
+      vb= 0;
+      A= [A; RC];
+      b= [b; vb];
+      ctype= [ctype "L"];
+    endfor
+  endfor
+else
+  error("collision");
+endif
 
 vartype(1:index_var("num"))= "-";
 
@@ -164,9 +198,12 @@ for s=0:num_steps()+1
   lb(index_var("removal", s))=0;
   ub(index_var("removal", s))=Inf;
   vartype(index_var("removal", s))= "C";
-  lb(index_var("hoist", s))=1;
-  ub(index_var("hoist", s))=numHoists;
-  vartype(index_var("hoist", s))= "I";
+  lb(index_var("hoist_r", s))=1;
+  ub(index_var("hoist_r", s))=numHoists;
+  vartype(index_var("hoist_r", s))= "I";
+  lb(index_var("hoist_e", s))=1;
+  ub(index_var("hoist_e", s))=numHoists;
+  vartype(index_var("hoist_e", s))= "I";
   endfor
 lb(index_var("disj_base_0"):index_var("num"))=0;
 ub(index_var("disj_base_0"):index_var("num"))=1;
