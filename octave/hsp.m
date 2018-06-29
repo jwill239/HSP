@@ -222,6 +222,6 @@ else
   if (overlap(x, numJobs, 2)>eps)
     printf("Error: overlap found!\n");
   endif
-  show_sol(x,1);
+  show_sol(x,0);
   timediagram(x, numJobs, 0);
 endif
