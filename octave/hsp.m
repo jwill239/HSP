@@ -1,11 +1,12 @@
 clear all;
 close all;
+time0=time;
 format short G;
 
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=2;
+numJobs=4;
 global numHoists;
 numHoists=2;
 
@@ -211,10 +212,11 @@ vartype(index_var("disj_base_0"):index_var("num"))="I";
 
 % ricerca
 c= zeros(index_var("num"), 1); c(index_var("period"))= 1;
-sense=1;
-param.msglev = 3;
+glpk_param.msglev= 3;
+% glpk_param.dual= 3;
+% glpk_param.tolobj= 0.1;
 
-[x, fmin, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, sense, param);
+[x, fmin, errnum, extra] = glpk (c, A, b, lb, ub, ctype, vartype, 1, glpk_param);
 
 if (errnum!=0)
   printf("glpk error %d;\n", errnum);
@@ -223,5 +225,6 @@ else
     printf("Error: overlap found!\n");
   endif
   show_sol(x,0);
-  timediagram(x, numJobs, 0);
+  timediagram(x, numJobs, 1);
 endif
+time1=time; printf("t %f minuti\n", (time1-time0)/60);
