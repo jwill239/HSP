@@ -167,7 +167,6 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-
 % hoist partition
 collision="partition";
 if (strcmp(collision, "partition"))
@@ -185,38 +184,6 @@ if (strcmp(collision, "partition"))
 else
   error("collision");
 endif
-
-% carri fermi all'istante 0
-if (true)
-  for s=0:num_steps()
-    for k=0:numJobs-1
-      RC=zeros(1, index_var("num"));
-      RC(index_var("removal", s))= 1;
-      RC(index_var("period"))= -k;
-      RC(index_var("rem_t0", s, 0, k))= -M;
-      vb= -M;
-      A= [A; RC];
-      b= [b; vb];
-      ctype= [ctype "L"];
-
-      RC=zeros(1, index_var("num"));
-      RC(index_var("removal", s))= -1;
-      RC(index_var("period"))= k;
-      RC(index_var("rem_t0", s, 0, k))= -M;
-      vb= -M;
-      A= [A; RC];
-      b= [b; vb];
-      ctype= [ctype "L"];
-    endfor    
-  endfor
-endif
-
-RC=zeros(1, index_var("num"));
-RC(index_var("rem_t0", 0, 0, 0):index_var("rem_t0", num_steps(), 0, numJobs-1))= 1;
-vb= 2;
-A= [A; RC];
-b= [b; vb];
-ctype= [ctype "L"];
 
 % end of constraints
 
@@ -239,13 +206,6 @@ for s=0:num_steps()+1
   lb(index_var("hoist_e", s))=1;
   ub(index_var("hoist_e", s))=numHoists;
   vartype(index_var("hoist_e", s))= "I";
-endfor
-for s=0:num_steps()
-    for k=0:numJobs-1
-    lb(index_var("rem_t0", s, 0, k))=0;
-    ub(index_var("rem_t0", s, 0, k))=1;
-    vartype(index_var("rem_t0", s, 0, k))= "I";
-  endfor
 endfor
 
 lb(index_var("disj_base_0"):index_var("num"))=0;
