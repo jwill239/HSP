@@ -17,8 +17,11 @@ function index= index_var(dato, step=0, step2=0, k=0)
     elseif (strcmp(dato, "hoist_r"))
     index= index_var("hoist_e", num_steps()+1) + 1 + step;
 
+    elseif (strcmp(dato, "rem_t0"))
+    index= index_var("hoist_r", num_steps()+1) + 1 + step*numJobs + k;
+
     elseif (strcmp(dato, "disj_base_0"))
-    index= index_var("hoist_r", num_steps()+1) + 1;
+    index= index_var("rem_t0", num_steps(), 0 , numJobs-1) + 1;
 
     elseif (strcmp(dato, "disj_base"))
     index= index_var("disj_base_0") + (1+2*numJobs)*(serialize_order_matrix(step, step2)-1);
