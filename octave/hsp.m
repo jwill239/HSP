@@ -8,7 +8,7 @@ init_ricetta;
 global numJobs;
 numJobs=3;
 global numHoists;
-numHoists=3;
+numHoists=4;
 
 margin=10;
 
@@ -79,10 +79,10 @@ b= [b; vb];
 ctype= [ctype "L"];
 
 % lin4
-% occupazione vasca (capacita' 1)
+% occupazione vasca (capacita')
 for s=1:num_steps()
   RC=zeros(1, index_var("num"));
-  RC(index_var("period"))= 1;
+  RC(index_var("period"))= tank_capacity(s);
   RC(index_var("entry", s))= 1;
   RC(index_var("removal", s))= -1;
   vb= margin;
