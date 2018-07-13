@@ -1,0 +1,2189 @@
+{
+    "lines" : [
+        {
+            "ID" : "Line1",
+            "tanks" : [    
+				{
+                "tank_type": "charge/discharge",
+                "stations": [
+                        {
+                            "ID": "31",
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "translator",
+                    "stations": [
+                        {
+                            "ID": "32",
+                            "position": {
+                                "x": 800,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 800,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "storage",
+                    "stations": [
+                        {
+                            "ID": "33",
+                            "position": {
+                                "x": 2055,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "solvente",
+                    "stations": [
+                        {
+                            "ID": "34",
+                            "position": {
+                                "x": 2670,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "35",
+                            "position": {
+                                "x": 3292,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Mordenzatura",
+                    "stations": [
+                        {
+                            "ID": "36",
+                            "position": {
+                                "x": 4020,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+						{
+                            "ID": "37",
+                            "position": {
+                                "x": 4712,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1400,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Mordenzatura",
+                    "stations": [
+                        {
+                            "ID": "38",
+                            "position": {
+                                "x": 5527,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+						{
+                            "ID": "39",
+                            "position": {
+                                "x": 6238,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1400,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "40",
+                            "position": {
+                                "x": 6991,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "41",
+                            "position": {
+                                "x": 7651,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "42",
+                            "position": {
+                                "x": 8281,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "43",
+                            "position": {
+                                "x": 9008,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "44",
+                            "position": {
+                                "x": 9520,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "45",
+                            "position": {
+                                "x": 10025,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "46",
+                            "position": {
+                                "x": 10525,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2300,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Neutralizzazione",
+                    "stations": [
+                        {
+                            "ID": "47",
+                            "position": {
+                                "x": 11168,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 570,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "48",
+                            "position": {
+                                "x": 11895,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "49",
+                            "position": {
+                                "x": 12397,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1220,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "PrePalladio",
+                    "stations": [
+                        {
+                            "ID": "50",
+                            "position": {
+                                "x": 13113,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 560,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Palladio",
+                    "stations": [
+                        {
+                            "ID": "51",
+                            "position": {
+                                "x": 13942,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 750,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "52",
+                            "position": {
+                                "x": 14764,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "53",
+                            "position": {
+                                "x": 15271,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1090,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Acceleratore",
+                    "stations": [
+                        {
+                            "ID": "54",
+                            "position": {
+                                "x": 15995,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "55",
+                            "position": {
+                                "x": 16805,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "56",
+                            "position": {
+                                "x": 17312,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1090,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Chimico",
+                    "stations": [
+                        {
+                            "ID": "57",
+                            "position": {
+                                "x": 18036,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "58",
+                            "position": {
+                                "x": 18742,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1255,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Chimico",
+                    "stations": [
+                        {
+                            "ID": "59",
+                            "position": {
+                                "x": 19574,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+						{
+                        "ID": "60",
+                        "position": 
+							{
+							"x": 20278,
+							"y": 0,
+							"z": 0
+							},
+						"enabled" : true,
+						"has_lid" : false
+						}
+                    ],
+                    "tank_size" : {
+			"dx" : 1255,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "61",
+                            "position": {
+                                "x": 21109,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "62",
+                            "position": {
+                                "x": 21625,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1090,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Neutralizzazione",
+                    "stations": [
+                        {
+                            "ID": "63",
+                            "position": {
+                                "x": 22296,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "64",
+                            "position": {
+                                "x": 22978,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 460,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "storage",
+                    "stations": [
+                        {
+                            "ID": "65",
+                            "position": {
+                                "x": 23614,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 460,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "storage",
+                    "stations": [
+                        {
+                            "ID": "66",
+                            "position": {
+                                "x": 24150,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 0,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Manutenzione Anodi",
+                    "stations": [
+                        {
+                            "ID": "67",
+                            "position": {
+                                "x": 24679,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 0,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Manutenzione Anodi",
+                    "stations": [
+                        {
+                            "ID": "68",
+                            "position": {
+                                "x": 25174,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 0,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "storage",
+                    "stations": [
+                        {
+                            "ID": "69",
+                            "position": {
+                                "x": 25860,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "70",
+                            "position": {
+                                "x": 26705,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1090,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "71",
+                            "position": {
+                                "x": 27371,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Prerame",
+                    "stations": [
+                        {
+                            "ID": "72",
+                            "position": {
+                                "x": 28093,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Rame Acido",
+                    "stations": [
+                        {
+                            "ID": "73",
+                            "position": {
+                                "x": 29072,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "74",
+                            "position": {
+                                "x": 29941,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "75",
+                            "position": {
+                                "x": 30806,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "76",
+                            "position": {
+                                "x": 31674,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "77",
+                            "position": {
+                                "x": 32542,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 4410,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Rame Acido",
+                    "stations": [
+                        {
+                            "ID": "78",
+                            "position": {
+                                "x": 33678,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "79",
+                            "position": {
+                                "x": 34537,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "80",
+                            "position": {
+                                "x": 35403,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "81",
+                            "position": {
+                                "x": 36262,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "82",
+                            "position": {
+                                "x": 37135,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 4410,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "83",
+                            "position": {
+                                "x": 38102,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "84",
+                            "position": {
+                                "x": 38627,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1090,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "translator",
+                    "stations": [
+                        {
+                            "ID": "85",
+                            "position": {
+                                "x": 39426,
+                                "y": 0,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 800,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                }
+            ],
+            "hoists" : [
+                {
+                    "ID" : "Hoist11",
+                    "position_range" : {
+                        "max_x" : 13113,
+                        "min_x" : 0
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist12",
+                    "position_range" : {
+                        "max_x" : 20278,
+                        "min_x" : 6238
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist13",
+                    "position_range" : {
+                        "max_x" : 30806,
+                        "min_x" : 13942
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist14",
+                    "position_range" : {
+                        "max_x" : 39426,
+                        "min_x" : 20278
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                }
+            ]
+        },
+        {
+            "ID" : "Line2",
+            "tanks" : [
+    
+                {
+                    "tank_type": "translator",
+                    "stations": [
+                        {
+                            "ID": "86",
+                            "position": {
+                                "x": 39426,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 800,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Neutralizzazione",
+                    "stations": [
+                        {
+                            "ID": "87",
+                            "position": {
+                                "x": 38607,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 510,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "88",
+                            "position": {
+                                "x": 38078,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 510,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Semilucido",
+                    "stations": [
+                        {
+                            "ID": "89",
+                            "position": {
+                                "x": 37218,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "90",
+                            "position": {
+                                "x": 36405,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "91",
+                            "position": {
+                                "x": 35590,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "92",
+                            "position": {
+                                "x": 34772,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2480,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },				
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Semilucido",
+                    "stations": [
+                        {
+                            "ID": "93",
+                            "position": {
+                                "x": 33683,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "94",
+                            "position": {
+                                "x": 32861,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "95",
+                            "position": {
+                                "x": 32061,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "96",
+                            "position": {
+                                "x": 31247,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2480,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },				
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "97",
+                            "position": {
+                                "x": 30373,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 490,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Lucido",
+                    "stations": [
+                        {
+                            "ID": "98",
+                            "position": {
+                                "x": 29522,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "99",
+                            "position": {
+                                "x": 28705,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "100",
+                            "position": {
+                                "x": 27882,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "101",
+                            "position": {
+                                "x": 27069,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2480,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },				
+				{
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "102",
+                            "position": {
+                                "x": 26206,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "103",
+                            "position": {
+                                "x": 25580,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Attivazione Elettrolitica",
+                    "stations": [
+                        {
+                            "ID": "104",
+                            "position": {
+                                "x": 24848,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "105",
+                            "position": {
+                                "x": 24135,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Neutralizzazione",
+                    "stations": [
+                        {
+                            "ID": "106",
+                            "position": {
+                                "x": 23509,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "107",
+                            "position": {
+                                "x": 22896,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel satinato",
+                    "stations": [
+                        {
+                            "ID": "108",
+                            "position": {
+                                "x": 22076,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "109",
+                            "position": {
+                                "x": 21252,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "110",
+                            "position": {
+                                "x": 20460,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2395,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel satinato",
+                    "stations": [
+                        {
+                            "ID": "111",
+                            "position": {
+                                "x": 19444,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "112",
+                            "position": {
+                                "x": 18636,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "113",
+                            "position": {
+                                "x": 17822,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2395,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "114",
+                            "position": {
+                                "x": 17052,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "115",
+                            "position": {
+                                "x": 16422,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Attivazione Elettrolitica",
+                    "stations": [
+                        {
+                            "ID": "116",
+                            "position": {
+                                "x": 15648,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 800,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "117",
+                            "position": {
+                                "x": 14868,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Microfessurato",
+                    "stations": [
+                        {
+                            "ID": "118",
+                            "position": {
+                                "x": 14147,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nichel Microporoso",
+                    "stations": [
+                        {
+                            "ID": "119",
+                            "position": {
+                                "x": 13358,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Neutralizzazione",
+                    "stations": [
+                        {
+                            "ID": "120",
+                            "position": {
+                                "x": 12731,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 480,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "PreCromo",
+                    "stations": [
+                        {
+                            "ID": "121",
+                            "position": {
+                                "x": 12104,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Cromo",
+                    "stations": [
+                        {
+                            "ID": "122",
+                            "position": {
+                                "x": 11282,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "123",
+                            "position": {
+                                "x": 10419,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 1704,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Recupero",
+                    "stations": [
+                        {
+                            "ID": "124",
+                            "position": {
+                                "x": 9594,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 580,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Ossalico",
+                    "stations": [
+                        {
+                            "ID": "125",
+                            "position": {
+                                "x": 8957,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "126",
+                            "position": {
+                                "x": 8300,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 510,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio Getti",
+                    "stations": [
+                        {
+                            "ID": "127",
+                            "position": {
+                                "x": 7667,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "128",
+                            "position": {
+                                "x": 7022,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 500,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Nickel Nero",
+                    "stations": [
+                        {
+                            "ID": "129",
+                            "position": {
+                                "x": 6305,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 588,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "130",
+                            "position": {
+                                "x": 5678,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 588,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "131",
+                            "position": {
+                                "x": 5210,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 588,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+				
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio Barra",
+                    "stations": [
+                        {
+                            "ID": "132",
+                            "position": {
+                                "x": 4577,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 504,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Lavaggio",
+                    "stations": [
+                        {
+                            "ID": "133",
+                            "position": {
+                                "x": 3901,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "treatment",
+		    "treatment_type": "Smetallizzazione",
+                    "stations": [
+                        {
+                            "ID": "134",
+                            "position": {
+                                "x": 3175,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "135",
+                            "position": {
+                                "x": 2445,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        },
+                        {
+                            "ID": "136",
+                            "position": {
+                                "x": 1730,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 2100,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "translator",
+                    "stations": [
+                        {
+                            "ID": "137",
+                            "position": {
+                                "x": 800,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 800,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                },
+                {
+                    "tank_type": "charge/discharge",
+                    "stations": [
+                        {
+                            "ID": "138",
+                            "position": {
+                                "x": 18,
+                                "y": 2900,
+                                "z": 0
+                            },
+			    "enabled" : true,
+			    "has_lid" : false
+                        }
+                    ],
+                    "tank_size" : {
+			"dx" : 700,
+			"dy" : 1220,
+			"dz" : 1010,
+			"thickness" : 20,
+			"border" : 40
+		    }
+                }			
+            ],
+            "hoists" : [
+                {
+                    "ID" : "Hoist21",
+                    "position_range" : {
+                        "max_x" : 39426,
+                        "min_x" : 24848
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist22",
+                    "position_range" : {
+                        "max_x" : 32061,
+                        "min_x" : 10419
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist23",
+                    "position_range" : {
+                        "max_x" : 27882,
+                        "min_x" : 5678
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                },
+                {
+                    "ID" : "Hoist24",
+                    "position_range" : {
+                        "max_x" : 12731,
+                        "min_x" : 18
+                    },
+                    "size" : 1600,
+                    "has_driptray" : true,
+                    "speed_profile" : {
+                        "acceleration_time" : 2.0,
+                        "breaking_time" : 2.0,
+                        "inching_time" : 1.0,
+                        "lifting_time" : 6.0,
+                        "lowering_time" : 6.0,
+                        "travel_speed" : 583.333,
+						"driptray_time" : 4.0 
+                    }
+                }
+            ]
+        }
+    ],
+    "shuttles" : [
+        {
+            "ID" : "Shuttle1",
+            "shuttle_type" : "??",
+            "reachable_stations" : ["32", "137"],
+            "has_driptray" : true,
+            "speed_profile" : {
+                "acceleration_time" : 1.0,
+                "breaking_time" : 2.0,
+                "inching_time" : 0.5,
+                "lifting_time" : 6.0,
+                "lowering_time" : 6.0,
+                "travel_speed" : 220.0
+            }
+        },
+        {
+            "ID" : "Shuttle2",
+            "shuttle_type" : "??",
+            "reachable_stations" : ["85", "86"],
+            "has_driptray" : true,
+            "speed_profile" : {
+                "acceleration_time" : 1.0,
+                "breaking_time" : 2.0,
+                "inching_time" : 0.5,
+                "lifting_time" : 6.0,
+                "lowering_time" : 6.0,
+                "travel_speed" : 220.0
+            }
+        }
+    ]
+}
