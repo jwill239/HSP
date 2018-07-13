@@ -38,7 +38,7 @@ b= [b; vb];
 ctype= [ctype "S"];
 
 % lin1
-% tra la estrazione da una posizione e l'inserimento nella successiva posizione deve esserci il tempo di sollevamento, traslazione, abbassamento.
+% tra la estrazione da una posizione e l'inserimento nella successiva posizione deve esserci il tempo di sollevamento, gocciolamento, traslazione, abbassamento.
 for s=1:num_steps()+1
   RC=zeros(1, index_var("num"));
   RC(index_var("entry", s))= 1;
