@@ -2,8 +2,8 @@ function t= hoist_move_t(PA, PB, opt="empty")
   
   global ricetta;
   
-  hoist_speed_r= 10; % reciproco della velocita', secondi per una posizione
-  hoist_lift_t= 5;
+  hoist_lift_t= 8;
+  hoist_lowering_t= 8;
 
   if (PA==0)
     xa=0;
@@ -18,14 +18,14 @@ function t= hoist_move_t(PA, PB, opt="empty")
   dist= abs(xb-xa);
   
   if (strcmp(opt, "empty"))
-    t= hoist_speed_r*dist;
+    t= hoist_speed(dist);
   elseif (strcmp(opt, "full"))
     if (PA==0)
       t_gocc= 0;
     else
       t_gocc= ricetta(PA, 3);
     endif
-    t= hoist_lift_t + t_gocc + hoist_speed_r*dist + hoist_lift_t;
+    t= hoist_lift_t + t_gocc + hoist_speed(dist) + hoist_lowering_t;
   else
     error("opt");
   endif

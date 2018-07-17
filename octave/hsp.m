@@ -6,9 +6,9 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=3;
+numJobs=4;
 global numHoists;
-numHoists=4;
+numHoists=2;
 
 margin=10;
 
@@ -82,7 +82,7 @@ ctype= [ctype "L"];
 % occupazione vasca (capacita')
 for s=1:num_steps()
   RC=zeros(1, index_var("num"));
-  RC(index_var("period"))= tank_capacity(s);
+  RC(index_var("period"))= ricetta(s, 5); % capacity
   RC(index_var("entry", s))= 1;
   RC(index_var("removal", s))= -1;
   vb= margin;
@@ -92,7 +92,7 @@ for s=1:num_steps()
 endfor
 
 % no overlap; disjunctive linearizzato
-M= 10000;
+M= 100000;
 for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
     % carri diversi
