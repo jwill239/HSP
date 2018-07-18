@@ -6,7 +6,7 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=4;
+numJobs=2;
 global numHoists;
 numHoists=2;
 
@@ -167,8 +167,9 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-% hoist partition
+
 collision="partition";
+% hoist partition, utilizzabile se le x sono crescenti nella ricetta
 if (strcmp(collision, "partition"))
   for s1=0:num_steps()-1
     for s2=s1+1:num_steps()
@@ -180,6 +181,17 @@ if (strcmp(collision, "partition"))
       b= [b; vb];
       ctype= [ctype "L"];
     endfor
+  endfor
+elseif (strcmp(collision, "fixed"))
+  for s=0:num_steps()
+    if (hoist_r_step(s)>0)
+      RC=zeros(1, index_var("num"));
+      RC(index_var("hoist_r", s))= 1;
+      vb= hoist_r_step(s);
+      A= [A; RC];
+      b= [b; vb];
+      ctype= [ctype "S"];
+    endif
   endfor
 else
   error("collision");
