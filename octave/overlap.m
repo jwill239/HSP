@@ -12,7 +12,7 @@ function osum= overlap(vars, numJobs, log=0)
         for k= 1:numJobs-1
           o= interval_overlap(i1+k*period, i2, log);
           if (o>0 && log>=1)
-            printf("step verlap: (step %u cycle %u), step %u\n", s1, k, s2);
+            printf("step overlap: (step %u cycle %u), step %u\n", s1, k, s2);
           endif
           osum= osum + o;
         endfor

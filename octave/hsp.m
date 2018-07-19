@@ -6,7 +6,7 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=2;
+numJobs=4;
 global numHoists;
 numHoists=2;
 
@@ -92,7 +92,7 @@ for s=1:num_steps()
 endfor
 
 % no overlap; disjunctive linearizzato
-M= 100000;
+M= 10000;
 for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
     % carri diversi
