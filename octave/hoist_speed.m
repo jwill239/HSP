@@ -1,7 +1,16 @@
 function t= hoist_speed(x_mm)
-  hoist_ab_time=2; % acceleration_time e breaking_time (es. 2)
-  hoist_inching_time=1; % es. 1
-  hoist_travel_speed= 583.333/1000; % metri al secondo (es. 583.333/1000)
+  
+  superfast= true;
+  
+  if (superfast)
+    hoist_ab_time=0.001; % acceleration_time e breaking_time
+    hoist_inching_time=0; % es. 1
+    hoist_travel_speed= 1000; % metri al secondo
+  else
+    hoist_ab_time=2; % acceleration_time e breaking_time
+    hoist_inching_time=1; % es. 1
+    hoist_travel_speed= 583.333/1000; % metri al secondo
+  endif
 
   x= abs(x_mm)/1000;
   if (x<eps)

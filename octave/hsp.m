@@ -6,9 +6,9 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=4;
+numJobs=12;
 global numHoists;
-numHoists=2;
+numHoists=1;
 
 margin=10;
 
