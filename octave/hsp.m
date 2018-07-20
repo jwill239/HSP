@@ -6,9 +6,9 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=12;
+numJobs=14;
 global numHoists;
-numHoists=1;
+numHoists=3;
 
 margin=10;
 
@@ -241,6 +241,6 @@ else
     printf("Error: overlap found!\n");
   endif
   show_sol(x,0);
-  timediagram(x, numJobs, 0);
+  timediagram(x, numJobs, 1);
 endif
 time1=time; printf("t %.1f minuti\n", (time1-time0)/60);
