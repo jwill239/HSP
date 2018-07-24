@@ -6,7 +6,7 @@ format short G;
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=10;
+numJobs=14;
 global numHoists;
 numHoists=2;
 
@@ -28,7 +28,7 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-% Ultimo Entry== Ultimo Removal
+% Ultimo Entry == Ultimo Removal
 RC=zeros(1, index_var("num"));
 RC(index_var("entry", num_steps()+1))= 1;
 RC(index_var("removal", num_steps()+1))= -1;
@@ -167,14 +167,19 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-collision="fixed";
-% hoist partition, utilizzabile se le x sono crescenti nella ricetta
+collision="partition";
+% hoist partition
 if (strcmp(collision, "partition"))
   for s1=0:num_steps()-1
     for s2=s1+1:num_steps()
       RC=zeros(1, index_var("num"));
-      RC(index_var("hoist_r", s2))= 1;
-      RC(index_var("hoist_r", s1))= -1;
+      if (x_step(s2)>=x_step(s1))
+        RC(index_var("hoist_r", s2))= 1;
+        RC(index_var("hoist_r", s1))= -1;
+      else
+        RC(index_var("hoist_r", s2))= -1;
+        RC(index_var("hoist_r", s1))= 1;
+      endif        
       vb= 0;
       A= [A; RC];
       b= [b; vb];
