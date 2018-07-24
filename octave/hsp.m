@@ -1,14 +1,14 @@
 clear all;
 close all;
-time0=time;
+time_log(1)=time;
 format short G;
 
 global ricetta;
 init_ricetta;
 global numJobs;
-numJobs=14;
+numJobs=10;
 global numHoists;
-numHoists=3;
+numHoists=2;
 
 margin=10;
 
@@ -152,8 +152,8 @@ endfor
 
 % inizializzazione di hoist_e sul carico e hoist_r sullo scarico (solo per motivi estetici)
 RC=zeros(1, index_var("num"));
-RC(index_var("hoist_r", s))= 1;
-RC(index_var("hoist_e", s))= -1;
+RC(index_var("hoist_r", 0))= 1;
+RC(index_var("hoist_e", 0))= -1;
 vb= 0;
 A= [A; RC];
 b= [b; vb];
@@ -167,8 +167,7 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-
-collision="partition";
+collision="fixed";
 % hoist partition, utilizzabile se le x sono crescenti nella ricetta
 if (strcmp(collision, "partition"))
   for s1=0:num_steps()-1
@@ -230,7 +229,9 @@ glpk_param.msglev= 3;
 % glpk_param.dual= 3;
 % glpk_param.tolobj= 0.1;
 
+time_log(2)= time;
 [x, fmin, errnum, glpk_extra] = glpk (c, A, b, lb, ub, ctype, vartype, 1, glpk_param);
+time_log(3)= time;
 
 if (errnum!=0)
   printf("glpk error %d;\n", errnum);
@@ -243,4 +244,4 @@ else
   show_sol(x,0);
   timediagram(x, numJobs, 1);
 endif
-time1=time; printf("t %.1f minuti\n", (time1-time0)/60);
+time_log(4)=time; printf("t %.1f minuti\n", (time_log(4)-time_log(1))/60);

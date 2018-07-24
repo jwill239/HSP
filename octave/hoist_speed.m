@@ -1,6 +1,6 @@
 function t= hoist_speed(x_mm)
   
-  superfast= false;
+  superfast= true;
   
   if (superfast)
     hoist_ab_time=0.001; % acceleration_time e breaking_time
