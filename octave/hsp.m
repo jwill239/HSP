@@ -97,8 +97,13 @@ for s1=0:num_steps()-1
   for s2=s1+1:num_steps()
     % carri diversi
     RC=zeros(1, index_var("num"));
-    RC(index_var("hoist_r", s2))= 1;
-    RC(index_var("hoist_r", s1))= -1;
+    if (x_step(s2) >= x_step(s1))
+      RC(index_var("hoist_r", s2))= 1;
+      RC(index_var("hoist_r", s1))= -1;
+    else
+      RC(index_var("hoist_r", s2))= -1;
+      RC(index_var("hoist_r", s1))= 1;
+	endif
     RC(index_var("disj_diffhoist", s1, s2))= -M;
     vb= 1-M;
     A= [A; RC];
@@ -167,7 +172,7 @@ A= [A; RC];
 b= [b; vb];
 ctype= [ctype "S"];
 
-collision="partition";
+collision="fixed";
 % hoist partition
 if (strcmp(collision, "partition"))
   for s1=0:num_steps()-1
@@ -231,8 +236,7 @@ vartype(index_var("disj_base_0"):index_var("num"))="I";
 % ricerca
 c= zeros(index_var("num"), 1); c(index_var("period"))= 1;
 glpk_param.msglev= 3;
-% glpk_param.dual= 3;
-% glpk_param.tolobj= 0.1;
+% glpk_param.tolobj= 1;
 
 time_log(2)= time;
 [x, fmin, errnum, glpk_extra] = glpk (c, A, b, lb, ub, ctype, vartype, 1, glpk_param);
