@@ -1,0 +1,25 @@
+
+ This is what I did to get a running animation.  You need to make changes  in the main hoist file (e.g. my_onehoist.m) and in taskset2simulink.m file.
+
+
+The files are built with a “\” as a file separator - I replaced these with the Matlab filesep function to avoid the linux assumption in future.
+Check the destination directories destdir and update to point to where you have your files and where you want the S_ file to sit. 
+Run the file as presented - generate a mdl file - and the S-function file.  The MDL file probably won’t load and the script fails with errors.
+ Find the error in the file - it was creating a second output block - so I cut the block, mux and line information to a separate text file to act as a script….
+ Use the information from the mdl file to manually complete the simulink model directly in Simulink.  Save it and  Export as a slx file.
+ Edited taskset2simulink.m to open the slx file not the file passed to it - on line 73
+ The wrl file must be prepared separately.  I found the 
+Change file(1:end-4) in the parameter to the name of the wrl file that you want to animate
+ Run a shortened version of the original file, removing the steps that try to run the simulink automatically and add some variables that are needed - see below
+
+% these have been added by me from taskset2simulink.m
+simulink = 1;
+sampleTime = 1;
+period = [];
+connect = 0;
+
+and delete everything after:
+%Define inputs for Virtual Reality block
+
+ Run the simulink model - making sure the S-function parameters point to the correct wrl file.
+
